@@ -1,0 +1,16 @@
+1 - select b.dsstatus, count(*) qtdprocessos from tb_processo a 
+inner join tb_status b
+on a.idstatus = b.idstatus
+group by b.dsstatus
+
+2 - select a.nroprocesso, max(b.dtandamento) from tb_processo a 
+inner join tb_andamento b
+on a.idprocesso = b.idprocesso
+where a.dtencerramento between '2013-01-01' and '2013-12-31'
+group by a.nroprocesso
+
+3 - select dtencerramento, count(*) qtd from tb_processo
+group by dtencerramento
+having count(*) > 5
+
+4 - select lpad(cast(nroprocesso as varchar), 12, '0') from tb_processo
